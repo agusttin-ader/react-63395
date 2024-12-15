@@ -1,0 +1,36 @@
+.itemlistconteiner{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    .itemList{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .item{
+        width: 20%;
+        margin: 3% 6%;
+        padding: 2%;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #fff;
+        transition: transform 0.2s, box-shadow 0.2s;
+        &:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .img-item{
+            width: 100%;
+            border-radius: 8px 8px 0 0;
+            background-color: rgb(39, 39, 39);
+        }
+        .text-item{
+            padding: 1% 0;
+            font-size: 14px;
+            color: #333;
+        }
+    }
+}
