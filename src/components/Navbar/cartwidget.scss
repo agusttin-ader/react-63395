@@ -1,9 +1,26 @@
-.cartwidget{
+.cartwidget {
     display: flex;
     align-items: center;
-    gap: 5px;
-    p{
+    gap: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #e0f7fa; /* Fondo pastel */
+    transition: background-color 0.3s, box-shadow 0.3s;
+
+    &:hover {
+        background-color: #b2ebf2; /* Fondo pastel más oscuro al pasar el cursor */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
         font-size: 1.125rem;
-        color: black;
+        color: #00796b; /* Color de texto pastel */
+        margin: 0;
+    }
+
+    .cart-icon {
+        width: 24px;
+        height: 24px;
+        fill: #00796b; /* Color del icono pastel */
     }
 }

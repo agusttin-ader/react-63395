@@ -7,7 +7,7 @@ const Navbar = () => {
     return (
     <nav className="navbar">
         <Link to ="/"  className="brand">
-        <img src="https://content.wepik.com/statics/466225664/preview-page0.jpg" alt="" />
+        <img src="../public/img/cofitos.jpeg" alt="logo" />
         <p>Cofito's</p>
         </Link>
         <ul className="categories">

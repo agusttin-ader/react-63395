@@ -1,25 +1,88 @@
-.navbar{
+// .navbar{
+//     width: 100%;
+//     height: 70px;
+//     display: flex;
+//     justify-content: space-around;
+//     align-items: center;
+//     background-color: #bdfdfd;
+//     color: rgb(55, 103, 107);
+//     .brand{
+//         display: flex;
+//         align-items: center;
+//         img{
+//             width: 50px;
+//             height: 50px;
+//         }
+//     }
+//     .categories{
+//         display: flex;
+//         list-style: none;
+//         gap: 10px;
+//         li{
+//             padding: 0 5px;
+//         }
+//     }
+// }
+
+.navbar {
     width: 100%;
     height: 70px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    background-color: #bdfdfd;
-    color: rgb(55, 103, 107);
-    .brand{
+    background-color: #f8f9fa; /* Fondo pastel */
+    color: #00796b; /* Color de texto */
+    padding: 0 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+
+    .brand {
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+        color: #05bda7;
+
+        &:hover {
+            background-color: #e0f7fa; /* Fondo pastel al pasar el cursor */
+            color: #00796b; /* Color de texto al pasar el cursor */
+        }
         display: flex;
         align-items: center;
-        img{
+
+        img {
             width: 50px;
             height: 50px;
+            margin-right: 10px;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #37474f;
         }
     }
-    .categories{
+
+    .categories {
         display: flex;
-        list-style: none;
-        gap: 10px;
-        li{
-            padding: 0 5px;
+        gap: 20px;
+
+        .category {
+            list-style: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            color: #05bda7;
+
+            &:hover {
+                background-color: #e0f7fa; /* Fondo pastel al pasar el cursor */
+                color: #00796b; /* Color de texto al pasar el cursor */
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+                font-size: 1rem;
+            }
         }
     }
 }

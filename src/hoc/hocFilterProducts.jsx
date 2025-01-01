@@ -14,8 +14,8 @@ const hocFilterProducts = (Component) => {
         }
 
         const search = ()=>{
-            const filterProducts = productos.filter((producto)=>{
-                return producto.nombre.toLowerCase().includes(query)
+            const filterProducts = productos.filter((product)=>{
+                return product.nombre.toLowerCase().includes(query)
             })
 
             return filterProducts

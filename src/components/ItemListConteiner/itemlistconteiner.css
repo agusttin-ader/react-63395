@@ -1,4 +1,4 @@
-.itemlistconteiner{
+/* .itemlistconteiner{
     padding: 50px;
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #fff;
+    background-color: #d8d8d8;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 .itemlistconteiner .item:hover {
@@ -34,4 +34,92 @@
     padding: 1% 0;
     font-size: 14px;
     color: #333;
+} */
+
+.itemlistconteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.itemlistconteiner .itemlist {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 20px;
+    max-width: 900px; /* Ajusta el ancho máximo del contenedor */
+    width: 100%;
+}
+
+.itemlistconteiner .item {
+    margin: 0;
+    padding: 20px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    text-align: center;
+    max-width: 250px; /* Ajusta el ancho máximo de las tarjetas */
+}
+
+.item .button-detail{
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.item .button-detail .detail{
+    text-decoration: none;
+    color: white;
+    font-size: larger;
+}
+
+.itemlistconteiner .item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.itemlistconteiner .item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+}
+
+.itemlistconteiner .item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #00796b;
+}
+
+.itemlistconteiner .item p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #00796b;
+}
+
+.itemlistconteiner .item .item-footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }

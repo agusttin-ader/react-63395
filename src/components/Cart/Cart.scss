@@ -1,0 +1,130 @@
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #00796b;
+}
+
+.cart-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #00796b;
+}
+
+.cart-items {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.cart-item img {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.cart-item-details {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.cart-item-title {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #00796b;
+}
+
+.cart-item-price {
+    font-size: 1rem;
+    color: #00796b;
+}
+
+.cart-total {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #00796b;
+}
+
+.cart-checkout {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #00796b;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.cart-checkout:hover {
+    background-color: darken(#00796b, 10%);
+}
+
+.back-to-home {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #00796b;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.back-to-home a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.back-to-home:hover {
+    background-color: darken(#00796b, 10%);
+}
+
+.empty-cart {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #00796b;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.delete-product {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #d32f2f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.delete-product:hover {
+    background-color: darken(#d32f2f, 10%);
+}
+
+.empty-cart:hover {
+    background-color: darken(#00796b, 10%);
+}
