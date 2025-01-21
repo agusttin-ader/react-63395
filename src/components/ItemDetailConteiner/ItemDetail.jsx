@@ -29,12 +29,12 @@ const ItemDetail = ({ product }) => {
         <div className="item-detail">
             <div className="images-detail-container">
                 <div className="secondary-images">
-                    {imagenes.map((image) => (
+                    {imagenes.map((imagen) => (
                         <img
-                            src={image}
-                            key={image}
+                            src={imagen}
+                            key={imagen}
                             alt="Secondary"
-                            onClick={() => setCurrentImage(image)}
+                            onClick={() => setCurrentImage(imagen)}
                         />
                     ))}
                 </div>

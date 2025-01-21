@@ -4,3 +4,13 @@
     align-items: center;
     height: 100vh;
 }
+
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #00796b; /* Updated to match page colors */
+    font-size: 1.5rem;
+    font-weight: bold;
+}

@@ -1,3 +1,6 @@
+import db from "../db/db.js";
+import { collection, addDoc } from "firebase/firestore";
+
 const PRODUCTOS = [
     {
         id: 'ab',
@@ -12,7 +15,7 @@ const PRODUCTOS = [
         id: "abc",
         nombre: "Torta tematica profesional",
         descripcion: "Torta tematica a eleccion con detalles profesionales",
-        imagen: ["/img/torta-tematica-2.jpg", "/img/torta-tematica-6.jpg", "/img/torta-tematica-7.jpg", "/img/torta-tematica-8.jpg"],
+        imagen: ["/img/torta-tematica-2.jpg", "/img/torta-tematica-6.jpeg", "/img/torta-tematica-7.jpeg", "/img/torta-tematica-8.jpg"],
         precio: 95500,
         stock: 4,
         category: "tortas"
@@ -39,7 +42,7 @@ const PRODUCTOS = [
         id: "abcdef",
         nombre: "Cupcakes de arandanos",
         descripcion: "Muffin de arandanos con streusel",
-        imagen: ["/img/muffin-arandanos.jpg", "/img/cupcake-arandanos-2.jpg","/img/cupcake-arandanos-3.jpg","/img/cupcake-arandanos-4.jpg"],
+        imagen: ["/img/muffin-arandanos.jpg", "/img/cupcake-arandanos-2.jpg","/img/cupcake-arandano-3.jpg","/img/cupcake-arandanos-4.jpg"],
         precio: 35000,
         stock: 8,
         category: "cupcakes"
@@ -48,7 +51,7 @@ const PRODUCTOS = [
         id: "abcdefg",
         nombre: "Cupcakes de vainilla con chips de chocolate",
         descripcion: "Muffin de chocolate con chips de chocolate",
-        imagen: ["/img/muffin-chips.jpg", "/img/cupcake-chips-2.jpg","/img/cupcake-chips-3.jpg","/img/cupcake-chips-4.jpg"],
+        imagen: ["img/muffin-chips.jpg", "/img/cupcake-chips-2.jpg","/img/cupcake-chips-3.jpg","/img/cupcake-chips-4.jpg"],
         precio: 35000,
         stock: 10,
         category: "cupcakes"
@@ -56,14 +59,18 @@ const PRODUCTOS = [
 
 ]
 
-
-const getProductos = ()=> {
-    return new Promise((resolve, reject)=>{
-        //Simulamos un retraso de red de 5 segundos
-        setTimeout(()=>{
-            resolve(PRODUCTOS)
-        }, 2000)
-    })
+const seedProducts  = async () => {
+    try{    
+        const productsRef = collection(db, "products")
+        PRODUCTOS.map( async({ id, ...dataProduct }) => {
+            addDoc(productsRef, dataProduct)
+        })
+        console.log("Productos cargados correctamente");
+        
+    }catch(error){
+        console.error(error);
+        
+    }
 }
 
-export { getProductos }// exporta la funcion getProductos
+seedProducts()

@@ -38,6 +38,7 @@
 
 .itemlistconteiner {
     display: flex;
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -122,4 +123,18 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+.saludo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #00796b;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }

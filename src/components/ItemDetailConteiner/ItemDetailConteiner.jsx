@@ -1,40 +1,54 @@
 import { useState, useEffect } from "react"
 import ItemDetail from "./ItemDetail"
-import { getProductos } from "../../data/data.js"
+import { doc, getDoc } from "firebase/firestore"
+import db from "../../db/db.js"
 import { useParams } from "react-router-dom"
 import { FadeLoader } from "react-spinners"
 import './itemDetailConteiner.scss'
 
 const ItemDetailConteiner = () => {
-    const [product, setProduct] = useState({})
+    const [product, setProduct] = useState(null)
     const [loading, setLoading] = useState(true)
-
+    const [error, setError] = useState(false)
 
     const { idProduct } = useParams()
-    
+
+    const getProduct = async () => {
+        try {
+            const docRef = doc(db, "products", idProduct)
+            const dataDb = await getDoc(docRef)
+
+            if (dataDb.exists()) {
+                const data = { id: dataDb.id, ...dataDb.data() }
+                setProduct(data)
+            } else {
+                setError(true)
+            }
+        } catch (error) {
+            console.log(error)
+            setError(true)
+        } finally {
+            setLoading(false)
+        }
+    }
+
     useEffect(() => {
-        setLoading(true)
-
-        getProductos()
-        .then( (data) => {
-            const productFind = data.find( (dataProduct) => dataProduct.id === idProduct);
-            setProduct(productFind)
-        })
-        .catch( (error) => console.log(error))
-
-        .finally( () => setLoading(false))
-
+        getProduct()
     }, [idProduct])
 
     return (
         <>
-        {
-            loading === true ? (
+            {loading ? (
                 <div className="loading-container">
                     <FadeLoader color="#00796b" />
                 </div>
-            ) : <ItemDetail product={product} />
-        }
+            ) : error ? (
+                <div className="error-container">
+                    <p>Product Not Found</p>
+                </div>
+            ) : (
+                <ItemDetail product={product} />
+            )}
         </>
     )
 }

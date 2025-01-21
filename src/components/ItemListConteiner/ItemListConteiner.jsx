@@ -1,49 +1,73 @@
 import { useState, useEffect } from "react"
 import ItemList from "./ItemList.jsx"
-import hocFilterProducts from "../../hoc/hocFilterProducts.jsx"
-import { getProductos } from "../../data/data.js"
-import {useParams} from "react-router-dom"
+import { useParams } from "react-router-dom"
+import { collection, getDocs, query, where } from "firebase/firestore"
+import db from "../../db/db.js"
 import { FadeLoader } from "react-spinners"
 import "./itemlistconteiner.css"
 
-const ItemListConteiner = ({saludo}) => {
+const ItemListConteiner = ({ saludo }) => {
     const [productos, setProductos] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     const { idCategory } = useParams()
+    const collectionName = collection(db, "products")
+
+    const getProducts = async () => {
+        try {
+            const dataDb = await getDocs(collectionName)
+
+            const data = dataDb.docs.map((productDb) => {
+                return { id: productDb.id, ...productDb.data() }
+            })
+
+            setProductos(data)
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const getProductsByCategory = async () => {
+        try {
+            setLoading(true)
+            const q = query(collectionName, where("category", "==", idCategory))
+            const dataDb = await getDocs(q)
+
+            const data = dataDb.docs.map((productDb) => {
+                return { id: productDb.id, ...productDb.data() }
+            })
+
+            setProductos(data)
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setLoading(false)
+        }
+    }
 
     useEffect(() => {
         setLoading(true)
-
-        getProductos()
-            .then((data) => {
-                if(idCategory){
-                    const filterProductos = data.filter ((producto) => producto.category === idCategory)
-                    setProductos(filterProductos)
-                }else{
-                    setProductos(data)
-                }
-            })
-            .catch((error) => {
-                console.error(error)
-            })
-            .finally(() => {
-                setLoading(false)
-            })
+        if (idCategory) {
+            getProductsByCategory()
+        } else {
+            getProducts()
+        }
     }, [idCategory])
 
     return (
-    <div className="itemlistconteiner">
-        <h1>{saludo}</h1>
-        {
-            loading === true ? (<div className="loading-container"> <FadeLoader color="#00796b" /> </div>) : (<ItemList productos={productos} />)
-        }
-    </div>
+        <div className="itemlistconteiner">
+            <h1 className="saludo">{saludo}</h1>
+            {loading ? (
+                <div className="loading-container">
+                    <FadeLoader color="#00796b" />
+                </div>
+            ) : (
+                <ItemList productos={productos} />
+            )}
+        </div>
     )
 }
 
-// export default ItemListConteiner
-
-const ItemListContainerWhitHoc = hocFilterProducts(ItemListConteiner)
-
-export default ItemListContainerWhitHoc
+export default ItemListConteiner

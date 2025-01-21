@@ -4,9 +4,9 @@ import ItemListConteiner from './components/ItemListConteiner/ItemListConteiner'
 import ItemDetailConteiner from './components/ItemDetailConteiner/ItemDetailConteiner'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
-import EjemploContadorEventListener from './components/Ejemplos/EjemploContadorEventListener'
-import EjemploFormulario from './components/Ejemplos/EjemploFormulario'
 import Cart from './components/Cart/Cart'
+import Checkout from './components/Checkout/Checkout'
+import { ToastContainer } from 'react-toastify'
 import './App.css'
 
 
@@ -19,14 +19,14 @@ return (
       <BrowserRouter> 
       <CartProvider> 
       <Navbar />
+      <ToastContainer theme="dark" />
       
       <Routes>
         <Route path = '/' element = {<ItemListConteiner saludo = 'Bienvenidos a CofitoS'/>} />
         <Route path = "/category/:idCategory" element = {<ItemListConteiner saludo = 'Bienvenidos a CofitoS'/>} />
         <Route path = "/detail/:idProduct" element = {<ItemDetailConteiner />}/>
-        <Route path = "/contador" element = {<EjemploContadorEventListener />}/>
-        <Route path = "/formulario" element = {<EjemploFormulario />}/>
         <Route path='/cart' element = {<Cart />}/>
+        <Route path='/checkout' element = {<Checkout />}/>
       </Routes>
 
       <Footer />
