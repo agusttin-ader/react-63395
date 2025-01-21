@@ -44,7 +44,7 @@ const ItemDetailConteiner = () => {
                 </div>
             ) : error ? (
                 <div className="error-container">
-                    <p>Product Not Found</p>
+                    <p>Oppss... Producto no encontrado!</p>
                 </div>
             ) : (
                 <ItemDetail product={product} />
