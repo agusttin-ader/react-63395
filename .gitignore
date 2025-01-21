@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Firebase configuration
-src/db/db.js
+# Database configuration
+src/db/
+
